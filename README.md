@@ -19,21 +19,32 @@ Give examples
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+# Useful commands
 
-Say what the step will be
-
+### Build a docker image from a Dockerfile
 ```
-Give the example
+sudo docker build -t imageName destination
 ```
-
-And repeat
-
+### Run a docker container
 ```
-until finished
+sudo docker run -ti imageName sh
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
+## Various details
+### Share folder creation
+- Create a directory on the OS
+- Add it to Virtualbox share folders
+- Launch the virtual machine
+- Create a "share" folder in your home directory
+- Launch the following line :
+```
+Sudo mount -t vboxsf FileName /home/sdnvm/share
+```
+- Check for the access rights
+- Add the following lines into /etc/fstab
+```
+#share folder
+FileName /home/sdnvm/share vboxsf defaults 0 0
+```
 
 ## Running the tests
 
