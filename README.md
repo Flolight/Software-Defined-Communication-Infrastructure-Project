@@ -4,11 +4,32 @@ Project description
 
 ## Getting Started
 ### Cleanning the project
-Launching the [cleanAll.sh](cleanAll.sh) script will clean all the environment (docker containers, images and mininet topology).
+Launching the [cleanAll.sh](cleanAll.sh) script with root privileges will clean all the environment (docker containers, images and mininet topology).
 
 ### Creating the mininet topology
 In order to create the mininet topology, just run the [buildTopo.sh](buildTopo.sh) script.
-
+### Start the different instances
+#### The application server
+```
+sudo docker exec mn.appserver sh -c "cd /workingdir/in-cse && ./start.sh"
+```
+#### The first gateway (GI)
+```
+sudo docker exec mn.gi sh -c "cd /workingdir/mn-cse && ./start.sh"
+```
+#### The final gateways (GFx)
+```
+sudo docker exec mn.gfx sh -c "cd /workingdir/mn-cse && ./start.sh"
+```
+#### The client application
+```
+sudo docker exec -it mn.appserver sh -c "cd /workingdir && java -jar IoTApp1.jar"
+```
+#### The IoTDevice (not working yet)
+```
+sudo docker exec -it mn.gf1 sh -c "cd /workingdir && java -jar IoTDevice.jar"
+```
+This last program is not currently working due to a connectivity error...
 ### Prerequisites
 
 What things you need to install the software and how to install them
@@ -19,7 +40,7 @@ What things you need to install the software and how to install them
 
 ### Build a docker image from a Dockerfile
 ```
-sudo docker build -t imageName destination
+sudo docker build -t imageName DockerfileLocation
 ```
 ### Run a docker container
 ```

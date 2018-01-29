@@ -1,7 +1,8 @@
 #GI
-FROM openjdk:alpine
+FROM openjdk:7
 
-RUN apk update \
+
+RUN apt-get update \
 &&  mkdir /workingdir/ \
 &&  mkdir /workingdir/mn-cse/
 
@@ -9,4 +10,5 @@ COPY mn-cse /workingdir/mn-cse/
 
 WORKDIR /workingdir/mn-cse/
 
-CMD ./start.sh
+#Uncomment inorder to launch the gi program after container creation
+#CMD ./start.sh
