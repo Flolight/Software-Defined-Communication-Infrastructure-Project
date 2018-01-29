@@ -4,7 +4,7 @@ Project description
 
 ## Getting Started
 ### Cleanning the project
-Launching the [cleanAll.sh](cleanAll.sh) script will clean all the environment (docker containers, images and mininet topology).
+Launching the [cleanAll.sh](cleanAll.sh) script with root privileges will clean all the environment (docker containers, images and mininet topology).
 
 ### Creating the mininet topology
 In order to create the mininet topology, just run the [buildTopo.sh](buildTopo.sh) script.
