@@ -19,7 +19,7 @@ What things you need to install the software and how to install them
 
 ### Build a docker image from a Dockerfile
 ```
-sudo docker build -t imageName destination
+sudo docker build -t imageName DockerfileLocation
 ```
 ### Run a docker container
 ```
