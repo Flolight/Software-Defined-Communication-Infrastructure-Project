@@ -18,7 +18,7 @@ public class DataType_GICreationParam {
 		return nbCPU;
 	}
 
-	public void setNbCPU(int nbCPU) {
+	private void setNbCPU(int nbCPU) {
 		this.nbCPU = nbCPU;
 	}
 
@@ -26,7 +26,7 @@ public class DataType_GICreationParam {
 		return maxRAM;
 	}
 
-	public void setMaxRAM(int maxRAM) {
+	private void setMaxRAM(int maxRAM) {
 		this.maxRAM = maxRAM;
 	}
 
@@ -34,7 +34,7 @@ public class DataType_GICreationParam {
 		return maxDisk;
 	}
 
-	public void setMaxDisk(int maxDisk) {
+	private void setMaxDisk(int maxDisk) {
 		this.maxDisk = maxDisk;
 	}
 }

@@ -34,19 +34,6 @@ public class GIArray {
      * Private constructor for the singleton
      */
     private GIArray(){
-    	try {
-			this.createSampleData();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-    }
-    
-    /**
-     * Set the sample Data for GIArray class
-     * @throws UnknownHostException 
-     */
-    public void createSampleData() throws UnknownHostException{
-    	GIs.add(new DataType_GI(new Address(InetAddress.getByName("10.0.0.4"), 80), Status.Working, 20, 20, 2, 2, 5, 1, "Initial Gateway"));
     }
 
     /**
@@ -55,7 +42,7 @@ public class GIArray {
      * @param status
      */
     public void updateGIStatus(DataType_GI gi, Status status){
-    	gi.setStatus(status);
+    	gi.getContainer().setStatus(status);
     }
     
     /**
