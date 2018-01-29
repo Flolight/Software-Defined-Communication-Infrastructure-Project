@@ -1,8 +1,5 @@
 package model;
 
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 /**
@@ -11,29 +8,10 @@ public class GIArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private ArrayList<DataType_GI> GIs;
+    private ArrayList<DataType_GI> listGIs;
 
-    /**
-     * A singleton to be sure of unity of the Model instantiation
-     *
-     */
-    private static class SingletonHolder{
-        public static final GIArray instance = new GIArray();
-    }
-
-    /**
-     * Here is how to access the Model from other classes
-     * @return
-     */
-    public static GIArray getInstance() {
-        return SingletonHolder.instance;
-    }
-
-
-    /**
-     * Private constructor for the singleton
-     */
-    private GIArray(){
+    public GIArray(){
+    	listGIs = new ArrayList<>();
     }
 
     /**
@@ -51,7 +29,7 @@ public class GIArray {
      * @param gi, the GI to be added in the list
      */
     public void addGI(DataType_GI gi){
-    	GIs.add(gi);
+    	listGIs.add(gi);
     }
     
     /**
@@ -60,7 +38,7 @@ public class GIArray {
      * @param gi, the GI to be deleted from the list
      */
     public void deleteGI(DataType_GI gi){
-    	GIs.remove(gi);
+    	listGIs.remove(gi);
     }
     
     /**
@@ -71,10 +49,10 @@ public class GIArray {
      */
     public DataType_GI getGIInfo(int id){
 
-        if(GIs.size()<id){
+        if(listGIs.size()<id){
         	return null;
         }
-        return GIs.get(id);
+        return listGIs.get(id);
     }
 
     /**
@@ -83,6 +61,6 @@ public class GIArray {
      * @return an ArrayList of GI
      */
     public ArrayList<DataType_GI> getGIs() {
-        return GIs;
+        return listGIs;
     }
 }
