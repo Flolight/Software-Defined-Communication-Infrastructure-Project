@@ -9,7 +9,7 @@ public class LinkArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private ArrayList<DataType_Link> listLinks;
+    private final ArrayList<DataType_Link> listLinks;
 
     public LinkArray(){
     	this.listLinks = new ArrayList<>();

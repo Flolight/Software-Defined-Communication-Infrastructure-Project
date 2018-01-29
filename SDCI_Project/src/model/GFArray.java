@@ -8,7 +8,7 @@ public class GFArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private ArrayList<DataType_GF> listGFs;
+    private final ArrayList<DataType_GF> listGFs;
 
     public GFArray(){
     	listGFs = new ArrayList<>();

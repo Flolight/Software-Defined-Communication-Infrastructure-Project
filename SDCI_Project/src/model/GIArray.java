@@ -8,7 +8,7 @@ public class GIArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private ArrayList<DataType_GI> listGIs;
+    private final ArrayList<DataType_GI> listGIs;
 
     public GIArray(){
     	listGIs = new ArrayList<>();
