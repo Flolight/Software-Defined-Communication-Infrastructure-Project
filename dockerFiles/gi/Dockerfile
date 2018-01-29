@@ -9,4 +9,5 @@ COPY mn-cse /workingdir/mn-cse/
 
 WORKDIR /workingdir/mn-cse/
 
-CMD ./start.sh
+#Uncomment inorder to launch the gi program after container creation
+#CMD ./start.sh
