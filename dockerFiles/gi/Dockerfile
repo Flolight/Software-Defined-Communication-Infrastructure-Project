@@ -1,7 +1,8 @@
 #GI
-FROM openjdk:alpine
+FROM openjdk:7
 
-RUN apk update \
+
+RUN apt-get update \
 &&  mkdir /workingdir/ \
 &&  mkdir /workingdir/mn-cse/
 
