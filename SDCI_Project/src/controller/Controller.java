@@ -14,6 +14,8 @@ import vnfAdapter.VNFAdapter;
 
 public class Controller {
 	
+	// TODO request update view if needed
+	
 	// TODO replace with the right path
 	private static String IMAGE_GI = "pathToImage";
 	
@@ -33,8 +35,6 @@ public class Controller {
     	sdn = new SDNAdapter();
     	vnf = new VNFAdapter();
     	topologyCache = sdn.getTopology();
-    	
-    	// TODO request update view
     }
     
 	public Topology getTopologyCache() {

@@ -25,12 +25,12 @@ public class SDNAdapter {
 	}
 
 	public void createRoutingRule(DataType_RoutingRule rule) {
-		// TODO
+		// TODO test different case and add rules to switch
 		this.routingRules.add(rule);
 	}
 	
 	public void deleteRoutingRule(DataType_RoutingRule rule) {
-		// TODO
+		// TODO test different case and remove rules from switch
 		this.routingRules.remove(rule);
 	}
 	
@@ -39,7 +39,7 @@ public class SDNAdapter {
 	}
 	
 	public Topology getTopology() {
-		// TODO
+		// TODO replace with real structure
 		Topology topo = null;
 		try {
 			topo = this.generateSampleTopology();
@@ -57,7 +57,7 @@ public class SDNAdapter {
 		
 		GIArray giArray = new GIArray();
 		Address adrInit = new Address(InetAddress.getByName("10.0.0.4"), 8080);
-		DataType_CT ctInit = new DataType_CT(adrInit, Status.Working, 20, 20, 2, 2, 5, 1);
+		DataType_CT ctInit = new DataType_CT(adrInit, Status.Working, 2, 20, 20, 2, 5, 1);
 		DataType_GI giInit = new DataType_GI(ctInit,"Initial Gateway");
 		giArray.addGI(giInit);
 		

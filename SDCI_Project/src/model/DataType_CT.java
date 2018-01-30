@@ -43,9 +43,17 @@ public class DataType_CT {
 	private int usedDisk;
 	
 	
-	/**
-	 * A basic CT constructor
-	 */
+	public DataType_CT(Address address, Status status, int nbCPU, int maxRAM, int maxDisk){
+		this.setAddress(address);
+		this.setStatus(status);
+		this.setMaxRAM(maxRAM);
+		this.setMaxDisk(maxDisk);
+		this.setUsedCPU(0);
+		this.setUsedRAM(0);
+		this.setUsedDisk(0);
+	}
+	
+	
 	public DataType_CT(Address address, Status status, int nbCPU, int maxRAM, int maxDisk, int usedCPU, int usedRAM, int usedDisk){
 		this.setAddress(address);
 		this.setStatus(status);
