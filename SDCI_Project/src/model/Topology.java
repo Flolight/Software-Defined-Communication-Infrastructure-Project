@@ -2,41 +2,36 @@ package model;
 
 
 public class Topology {
+	
+	private final DataType_Server server;
 
-	private GFArray GFArray;
+	private final GFArray GFArray;
 	
-	private GIArray GIArray;
+	private final GIArray GIArray;
 	
-	private LinkArray LinkArray;
+	private final LinkArray LinkArray;
 	
-	public Topology(GFArray gfArray, GIArray giArray, LinkArray linkArray){
-		this.setGFArray(gfArray);
-		this.setGIArray(giArray);
-		this.setLinkArray(linkArray);
+	public Topology(DataType_Server server, GFArray gfArray, GIArray giArray, LinkArray linkArray){
+		this.server = server;
+		this.GFArray = gfArray;
+		this.GIArray = giArray;
+		this.LinkArray = linkArray;
+	}
+
+	public DataType_Server getServer() {
+		return server;
 	}
 
 	public GFArray getGFArray() {
 		return GFArray;
 	}
 
-	public void setGFArray(GFArray gFArray) {
-		GFArray = gFArray;
-	}
-
 	public GIArray getGIArray() {
 		return GIArray;
 	}
 
-	public void setGIArray(GIArray gIArray) {
-		GIArray = gIArray;
-	}
-
 	public LinkArray getLinkArray() {
 		return LinkArray;
-	}
-
-	public void setLinkArray(LinkArray linkArray) {
-		LinkArray = linkArray;
 	}
 
 }

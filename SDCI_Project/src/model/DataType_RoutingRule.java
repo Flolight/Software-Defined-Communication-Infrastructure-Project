@@ -6,11 +6,11 @@ public class DataType_RoutingRule {
 	
 	private Address destIPAddress;
 	
-	private String adrRoute;
+	private Address adrRoute;
 	
 	private NetworkPolicy networkPolicy;
 	
-	public DataType_RoutingRule(Address srcIPAddress, Address destIPAddress, String adrRoute, NetworkPolicy networkPolicy){
+	public DataType_RoutingRule(Address srcIPAddress, Address destIPAddress, Address adrRoute, NetworkPolicy networkPolicy){
 		this.setSrcIPAddress(srcIPAddress);
 		this.setDestIPAddress(destIPAddress);
 		this.setAdrRoute(adrRoute);
@@ -33,11 +33,11 @@ public class DataType_RoutingRule {
 		this.destIPAddress = destIPAddress;
 	}
 
-	public String getAdrRoute() {
+	public Address getAdrRoute() {
 		return adrRoute;
 	}
 
-	public void setAdrRoute(String adrRoute) {
+	public void setAdrRoute(Address adrRoute) {
 		this.adrRoute = adrRoute;
 	}
 

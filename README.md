@@ -4,6 +4,11 @@ Project description
 
 ## Getting Started
 ### Cleanning the project
+
+Start the controller going to the SDNController directory and run :
+```
+java -jar myTarget/sdncontroller.jar
+```
 Launching the [cleanAll.sh](cleanAll.sh) script with root privileges will clean all the environment (docker containers, images and mininet topology).
 
 ### Creating the mininet topology
