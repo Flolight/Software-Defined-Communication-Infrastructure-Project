@@ -17,6 +17,8 @@ public class GIOverviewController {
 	
 	@FXML
 	private Button btnAddGI;
+	@FXML
+	private Button btnDelGI;
 	
 	//reference to the main application
 	private MainApp mainApp;
@@ -47,6 +49,15 @@ public class GIOverviewController {
 	public void handleBtnAddGIAction() {
 		DataType_GICreationParam giConfig = new DataType_GICreationParam(2, 10, 10);
 		mainApp.getController().askGICreation(giConfig);
+	}
+	
+	@FXML
+	public void handleBtnDelGIAction() {
+		int selectedIndex = _GIArray.getSelectionModel().getSelectedIndex();
+		if (selectedIndex > 0) {
+			// can not delete GInit in this version
+			mainApp.getController().askGIDeletion(selectedIndex);
+		}
 	}
 	
 	

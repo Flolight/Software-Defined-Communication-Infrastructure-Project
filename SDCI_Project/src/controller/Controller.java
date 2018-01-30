@@ -1,6 +1,7 @@
 package controller;
 
 import model.Address;
+import model.DataType_GI;
 import model.DataType_GICreationParam;
 import model.DataType_Link;
 import model.DataType_RoutingRule;
@@ -55,10 +56,10 @@ public class Controller {
     }
     
     public void askGIDeletion(int idGI) {
-    	int value = vnf.stopAndDeleteGI(idGI);
-    	if (value >= 0) {
+    	DataType_GI value = vnf.stopAndDeleteGI(idGI);
+    	if (value != null) {
     		// update only if succeed
-    		topologyCache.getGIArray().deleteGI(vnf.getGIInfo(idGI));
+    		topologyCache.getGIArray().deleteGI(value);
     	}
     }
     

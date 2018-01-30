@@ -70,10 +70,10 @@ public class VNFAdapter {
 	/**
 	 * 
 	 * @param idGI
-	 * @return -1 if failure, >0 if succeed
+	 * @return the object removed
 	 */
-	public int stopAndDeleteGI(int idGI) {
-		int value = -1;
+	public DataType_GI stopAndDeleteGI(int idGI) {
+		DataType_GI value = null;
 		if (stopGI(idGI) >= 0) {
 			value = deleteGI(idGI);
 		}
@@ -85,10 +85,9 @@ public class VNFAdapter {
 		return 1;
 	}
 	
-	private int deleteGI(int idGI) {
+	private DataType_GI deleteGI(int idGI) {
 		sampleData.get(idGI).getContainer().setStatus(Status.Deleting);
-		sampleData.remove(idGI);
-		return 1;
+		return sampleData.remove(idGI);
 	}
 	
 	public DataType_GI getGIInfo(int idGI) {
