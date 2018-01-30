@@ -40,4 +40,8 @@ public class DataType_GI {
 		return container;
 	}
 	
+	public Address getAddress() {
+		return container.getAddress();
+	}
+	
 }

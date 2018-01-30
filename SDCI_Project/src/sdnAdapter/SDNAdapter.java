@@ -9,6 +9,7 @@ import model.DataType_CT;
 import model.DataType_GF;
 import model.DataType_GI;
 import model.DataType_RoutingRule;
+import model.DataType_Server;
 import model.GFArray;
 import model.GIArray;
 import model.LinkArray;
@@ -50,6 +51,8 @@ public class SDNAdapter {
 	}
 	
 	private Topology generateSampleTopology() throws UnknownHostException {
+		DataType_Server server = new DataType_Server(new Address(InetAddress.getByName("10.0.0.240"), 80));
+		
 		GFArray gfArray = new GFArray();
 		gfArray.addGF(new DataType_GF(new Address(InetAddress.getByName("10.0.0.1"), 80), Status.Working, "GF Zone 1"));
 		gfArray.addGF(new DataType_GF(new Address(InetAddress.getByName("10.0.0.2"), 80), Status.Working, "GF Zone 2"));
@@ -63,7 +66,7 @@ public class SDNAdapter {
 		
 		LinkArray linkArray = new LinkArray();
 		
-		Topology topology = new Topology(gfArray, giArray, linkArray);
+		Topology topology = new Topology(server, gfArray, giArray, linkArray);
 		return topology;
 	}
 

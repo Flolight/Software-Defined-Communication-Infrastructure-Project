@@ -18,10 +18,15 @@ public class VNFAdapter {
 	/**
 	 * Simulate data from vnf orchestrator
 	 */
-	private final ArrayList<DataType_GI> sampleData = new ArrayList<>();
+	private final ArrayList<DataType_GI> sampleData;
 
 	public VNFAdapter() {
 		// TODO Auto-generated constructor stub
+		sampleData = new ArrayList<>();
+	}
+	
+	public void addGInit(DataType_GI gInit) {
+		sampleData.add(gInit);
 	}
 	
 	public int createAndDeployGI(DataType_GICreationParam params, String image) {

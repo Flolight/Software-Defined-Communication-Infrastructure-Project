@@ -1,8 +1,6 @@
 package view;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import controller.Controller;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -12,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.DataType_GF;
 
 
 public class MainApp extends Application {
