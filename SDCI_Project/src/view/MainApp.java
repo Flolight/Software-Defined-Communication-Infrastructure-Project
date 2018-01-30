@@ -95,8 +95,7 @@ public class MainApp extends Application {
 		
 			GFOverviewController gfcontroller = loader.getController();
 			gfcontroller.setMainApp(this);
-			gfcontroller.bindGFArray(FXCollections.observableArrayList(
-					controller.getTopologyCache().getGFArray().getGFs()));
+			gfcontroller.bindGFArray(controller.getTopologyCache().getGFArray().getGFs());
 		
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -115,8 +114,7 @@ public class MainApp extends Application {
 		
 			GIOverviewController gicontroller = loader.getController();
 			gicontroller.setMainApp(this);
-			gicontroller.bindGIArray(FXCollections.observableArrayList(
-					controller.getTopologyCache().getGIArray().getGIs()));
+			gicontroller.bindGIArray(controller.getTopologyCache().getGIArray().getGIs());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -134,8 +132,7 @@ public class MainApp extends Application {
 		
 			LinkOverviewController linkcontroller = loader.getController();
 			linkcontroller.setMainApp(this);
-			linkcontroller.bindLinkArray(FXCollections.observableArrayList(
-					controller.getTopologyCache().getLinkArray().getLinks()));
+			linkcontroller.bindLinkArray(controller.getTopologyCache().getLinkArray().getLinks());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

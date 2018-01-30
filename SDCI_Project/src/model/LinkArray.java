@@ -3,16 +3,19 @@ package model;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  */
 public class LinkArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private final ArrayList<DataType_Link> listLinks;
+    private final ObservableList<DataType_Link> listLinks;
 
     public LinkArray(){
-    	this.listLinks = new ArrayList<>();
+    	listLinks = FXCollections.observableArrayList(new ArrayList<>());
     }
     
     /**
@@ -50,9 +53,9 @@ public class LinkArray {
     /**
      * return every Link
      *
-     * @return an ArrayList of Link
+     * @return an ObservableList of Link
      */
-    public ArrayList<DataType_Link> getLinks() {
+    public ObservableList<DataType_Link> getLinks() {
         return listLinks;
     }
 }

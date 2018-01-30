@@ -7,6 +7,6 @@
 <AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LinkOverviewController">
    <children>
       <ListView fx:id="_LinkArray" />
-      <Button fx:id="btnAddLink" text="addLink" AnchorPane.rightAnchor="30"/>
+      <Button fx:id="btnAddLink" text="addLink" onAction="#handleBtnAddLinkAction" AnchorPane.rightAnchor="30"/>
    </children>
 </AnchorPane>

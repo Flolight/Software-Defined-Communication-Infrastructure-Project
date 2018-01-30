@@ -15,7 +15,6 @@ public class GIOverviewController {
 	@FXML
 	private ListView<DataType_GI> _GIArray;
 	
-	// for test
 	@FXML
 	private Button btnAddGI;
 	
@@ -42,13 +41,13 @@ public class GIOverviewController {
 			};
 			return cell;
 		});
-		
-		// for test
-		btnAddGI.setOnAction((e)->{
-			DataType_GICreationParam giConfig = new DataType_GICreationParam(2, 10, 10);
-			mainApp.getController().askGICreation(giConfig);
-			System.out.println(mainApp.getController().getTopologyCache().getGIArray().getGIs());
-		});
+	}
+	
+	@FXML
+	public void handleBtnAddGIAction() {
+		DataType_GICreationParam giConfig = new DataType_GICreationParam(2, 10, 10);
+		mainApp.getController().askGICreation(giConfig);
+		System.out.println(mainApp.getController().getTopologyCache().getGIArray().getGIs());
 	}
 	
 	

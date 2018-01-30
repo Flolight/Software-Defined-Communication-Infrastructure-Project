@@ -15,10 +15,9 @@ public class LinkOverviewController {
 	@FXML
 	private ListView<DataType_Link> _LinkArray;
 	
-	// for test
+	
 	@FXML
 	private Button btnAddLink;
-		
 	
 	//reference to the main application
 	private MainApp mainApp;
@@ -43,11 +42,14 @@ public class LinkOverviewController {
 			};
 			return cell;
 		});
-		
-		// for test
-		btnAddLink.setOnAction((e)->{
-			//TO DO
-		});
+	}
+	
+	@FXML
+	public void handleBtnAddLinkAction() {
+		DataType_GF gf = mainApp.getController().getTopologyCache().getGFArray().getGFInfo(1);
+		DataType_GI gi = mainApp.getController().getTopologyCache().getGIArray().getGIInfo(1);
+		DataType_Link link = new DataType_Link(gi, gf);
+		mainApp.getController().askLinkCreation(link);
 	}
 	
 	

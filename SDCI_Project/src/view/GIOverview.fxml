@@ -7,6 +7,6 @@
 <AnchorPane prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GIOverviewController">
    <children>
       <ListView fx:id="_GIArray" />
-      <Button fx:id="btnAddGI" text="addGI" AnchorPane.rightAnchor="30"/>
+      <Button fx:id="btnAddGI" text="addGI" onAction="#handleBtnAddGIAction" AnchorPane.rightAnchor="30"/>
    </children>
 </AnchorPane>
