@@ -48,12 +48,13 @@ public class Controller {
 	}
 
 	public void askGICreation(DataType_GICreationParam giConfig) {
-    	vnf.createAndDeployGI(giConfig, IMAGE_GI);
-    	// TODO analyze result, update view
+    	int idGI = vnf.createAndDeployGI(giConfig, IMAGE_GI);
+    	topologyCache.getGIArray().addGI(vnf.getGIInfo(idGI));
     }
     
     public void askGIDeletion(int idGI) {
     	vnf.stopAndDeleteGI(idGI);
+    	topologyCache.getGIArray().deleteGI(vnf.getGIInfo(idGI));
     	// TODO
     }
     
