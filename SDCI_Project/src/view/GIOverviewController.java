@@ -47,7 +47,6 @@ public class GIOverviewController {
 	public void handleBtnAddGIAction() {
 		DataType_GICreationParam giConfig = new DataType_GICreationParam(2, 10, 10);
 		mainApp.getController().askGICreation(giConfig);
-		System.out.println(mainApp.getController().getTopologyCache().getGIArray().getGIs());
 	}
 	
 	

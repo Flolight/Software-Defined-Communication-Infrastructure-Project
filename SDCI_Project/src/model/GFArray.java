@@ -30,15 +30,17 @@ public class GFArray {
      * Add a GF
      *
      * @param gf, the GF to be added in the list
+     * @return same as listGFs.add(gf)
      */
-    public void addGF(DataType_GF gf){
-    	listGFs.add(gf);
+    public boolean addGF(DataType_GF gf){
+    	return listGFs.add(gf);
     }
     
     /**
      * Delete a GF
      *
      * @param gf, the GF to be deleted from the list
+     * @return same as listGFs.remove(gf)
      */
     public void deleteGF(DataType_GF gf){
     	listGFs.remove(gf);

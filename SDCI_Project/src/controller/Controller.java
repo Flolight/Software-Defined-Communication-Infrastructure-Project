@@ -17,8 +17,7 @@ import vnfAdapter.VNFAdapter;
 
 public class Controller {
 	
-	// TODO request update view if needed
-	// TODO handle failure case
+	// TODO handle failure case for links
 	
 	// TODO replace with the right path
 	private static String IMAGE_GI = "pathToImage";
@@ -49,13 +48,18 @@ public class Controller {
 
 	public void askGICreation(DataType_GICreationParam giConfig) {
     	int idGI = vnf.createAndDeployGI(giConfig, IMAGE_GI);
-    	topologyCache.getGIArray().addGI(vnf.getGIInfo(idGI));
+    	if (idGI >= 0) {
+    		// update only if succeed
+    		topologyCache.getGIArray().addGI(vnf.getGIInfo(idGI));
+    	}
     }
     
     public void askGIDeletion(int idGI) {
-    	vnf.stopAndDeleteGI(idGI);
-    	topologyCache.getGIArray().deleteGI(vnf.getGIInfo(idGI));
-    	// TODO
+    	int value = vnf.stopAndDeleteGI(idGI);
+    	if (value >= 0) {
+    		// update only if succeed
+    		topologyCache.getGIArray().deleteGI(vnf.getGIInfo(idGI));
+    	}
     }
     
     public void askLinkCreation(DataType_Link link) {
