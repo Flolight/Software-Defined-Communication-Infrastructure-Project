@@ -1,6 +1,7 @@
 package view;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -42,7 +43,10 @@ public class GFOverviewController {
 	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp = mainApp;
-		
+	}
+	
+	public void bindGFArray(ObservableList<DataType_GF> gfArray) {
+		_GFArray.setItems(gfArray);
 	}
 
 	public void refresh(){

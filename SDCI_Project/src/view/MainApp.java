@@ -1,20 +1,25 @@
 package view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import controller.Controller;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.DataType_GF;
 
 
 public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
+	private Controller controller;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -22,6 +27,7 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("SDCI mini project");
 		
 		initRootLayout();
+		initController();
 		
 		showSplashScreen();
 	}
@@ -47,8 +53,17 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	public BorderPane getRootLayout(){
+	
+	private void initController() {
+		controller = Controller.getInstance();
+	}
+	
+	public BorderPane getRootLayout() {
 		return rootLayout;
+	}
+	
+	public Controller getController() {
+		return controller;
 	}
 	
 	
@@ -82,9 +97,10 @@ public class MainApp extends Application {
 			//Set user overview int the Left of root layout
 			rootLayout.setLeft(gfOverview);
 		
-			GFOverviewController controller = loader.getController();
-			controller.setMainApp(this);
-		
+			GFOverviewController gfcontroller = loader.getController();
+			gfcontroller.setMainApp(this);
+			gfcontroller.bindGFArray(FXCollections.observableArrayList(
+					controller.getTopologyCache().getGFArray().getGFs()));
 		
 		} catch (IOException e) {
 			e.printStackTrace();
