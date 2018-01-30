@@ -15,11 +15,6 @@ public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
-
-	
-	public MainApp(){
-	}
-
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -29,8 +24,6 @@ public class MainApp extends Application {
 		initRootLayout();
 		
 		showSplashScreen();
-		
-		
 	}
 	
 	public void initRootLayout(){
@@ -115,10 +108,5 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}*/
-	
 
-	public static void main(String[] args) {
-		launch(args);
-		
-	}
 }

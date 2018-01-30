@@ -1,8 +1,6 @@
 package model;
 
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 /**
@@ -11,29 +9,10 @@ public class LinkArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private ArrayList<DataType_Link> Links;
+    private final ArrayList<DataType_Link> listLinks;
 
-    /**
-     * A singleton to be sure of unity of the Model instantiation
-     *
-     */
-    private static class SingletonHolder{
-        public static final LinkArray instance = new LinkArray();
-    }
-
-    /**
-     * Here is how to access the Model from other classes
-     * @return
-     */
-    public static LinkArray getInstance() {
-        return SingletonHolder.instance;
-    }
-
-
-    /**
-     * Private constructor for the singleton
-     */
-    private LinkArray(){
+    public LinkArray(){
+    	this.listLinks = new ArrayList<>();
     }
     
     /**
@@ -42,7 +21,7 @@ public class LinkArray {
      * @param link, the Link to be added in the list
      */
     public void addLink(DataType_Link link){
-    	Links.add(link);
+    	listLinks.add(link);
     }
     
     /**
@@ -51,7 +30,7 @@ public class LinkArray {
      * @param link, the Link to be deleted from the list
      */
     public void deleteLink(DataType_Link link){
-    	Links.remove(link);
+    	listLinks.remove(link);
     }
     
     /**
@@ -62,10 +41,10 @@ public class LinkArray {
      */
     public DataType_Link getLinkInfo(int id){
 
-        if(Links.size()<id){
+        if(listLinks.size()<id){
         	return null;
         }
-        return Links.get(id);
+        return listLinks.get(id);
     }
 
     /**
@@ -74,6 +53,6 @@ public class LinkArray {
      * @return an ArrayList of Link
      */
     public ArrayList<DataType_Link> getLinks() {
-        return Links;
+        return listLinks;
     }
 }

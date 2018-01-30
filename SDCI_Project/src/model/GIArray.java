@@ -1,8 +1,5 @@
 package model;
 
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 /**
@@ -11,42 +8,10 @@ public class GIArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private ArrayList<DataType_GI> GIs;
+    private final ArrayList<DataType_GI> listGIs;
 
-    /**
-     * A singleton to be sure of unity of the Model instantiation
-     *
-     */
-    private static class SingletonHolder{
-        public static final GIArray instance = new GIArray();
-    }
-
-    /**
-     * Here is how to access the Model from other classes
-     * @return
-     */
-    public static GIArray getInstance() {
-        return SingletonHolder.instance;
-    }
-
-
-    /**
-     * Private constructor for the singleton
-     */
-    private GIArray(){
-    	try {
-			this.createSampleData();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-    }
-    
-    /**
-     * Set the sample Data for GIArray class
-     * @throws UnknownHostException 
-     */
-    public void createSampleData() throws UnknownHostException{
-    	GIs.add(new DataType_GI(new Address(InetAddress.getByName("10.0.0.4"), 80), Status.Working, 20, 20, 2, 2, 5, 1, "Initial Gateway"));
+    public GIArray(){
+    	listGIs = new ArrayList<>();
     }
 
     /**
@@ -55,7 +20,7 @@ public class GIArray {
      * @param status
      */
     public void updateGIStatus(DataType_GI gi, Status status){
-    	gi.setStatus(status);
+    	gi.getContainer().setStatus(status);
     }
     
     /**
@@ -64,7 +29,7 @@ public class GIArray {
      * @param gi, the GI to be added in the list
      */
     public void addGI(DataType_GI gi){
-    	GIs.add(gi);
+    	listGIs.add(gi);
     }
     
     /**
@@ -73,7 +38,7 @@ public class GIArray {
      * @param gi, the GI to be deleted from the list
      */
     public void deleteGI(DataType_GI gi){
-    	GIs.remove(gi);
+    	listGIs.remove(gi);
     }
     
     /**
@@ -84,10 +49,10 @@ public class GIArray {
      */
     public DataType_GI getGIInfo(int id){
 
-        if(GIs.size()<id){
+        if(listGIs.size()<id){
         	return null;
         }
-        return GIs.get(id);
+        return listGIs.get(id);
     }
 
     /**
@@ -96,6 +61,6 @@ public class GIArray {
      * @return an ArrayList of GI
      */
     public ArrayList<DataType_GI> getGIs() {
-        return GIs;
+        return listGIs;
     }
 }
