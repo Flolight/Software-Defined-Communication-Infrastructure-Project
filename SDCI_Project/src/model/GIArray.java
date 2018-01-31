@@ -52,7 +52,7 @@ public class GIArray {
      */
     public DataType_GI getGIInfo(int id){
 
-        if(listGIs.size()<id){
+        if(listGIs.size()<= id || id < 0){
         	return null;
         }
         return listGIs.get(id);

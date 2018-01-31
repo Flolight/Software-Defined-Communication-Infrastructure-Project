@@ -10,5 +10,6 @@
       <Label text="Link List" />
       <ListView fx:id="_LinkArray" AnchorPane.topAnchor="20.0"/>
       <Button fx:id="btnAddLink" text="addLink" onAction="#handleBtnAddLinkAction" AnchorPane.rightAnchor="30"/>
+      <Button fx:id="btnDelLink" text="delLink" onAction="#handleBtnDelLinkAction" AnchorPane.rightAnchor="30" AnchorPane.topAnchor="50"/>
    </children>
 </AnchorPane>

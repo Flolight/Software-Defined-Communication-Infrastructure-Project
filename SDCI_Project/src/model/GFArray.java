@@ -54,7 +54,7 @@ public class GFArray {
      */
     public DataType_GF getGFInfo(int id){
 
-        if(listGFs.size()<id){
+        if(listGFs.size()<=id || id < 0 ){
         	return null;
         }
         return listGFs.get(id);

@@ -46,12 +46,20 @@ public class LinkOverviewController {
 	
 	@FXML
 	public void handleBtnAddLinkAction() {
-		DataType_GF gf = mainApp.getController().getTopologyCache().getGFArray().getGFInfo(mainApp.getSelectedIndexGF());
-		DataType_GI gi = mainApp.getController().getTopologyCache().getGIArray().getGIInfo(mainApp.getSelectedIndexGI());
+		int gfIndex = mainApp.getSelectedIndexGF();
+		int giIndex = mainApp.getSelectedIndexGI();
+		
+		DataType_GF gf = mainApp.getController().getTopologyCache().getGFArray().getGFInfo(gfIndex);
+		DataType_GI gi = mainApp.getController().getTopologyCache().getGIArray().getGIInfo(giIndex);
 		DataType_Link link = new DataType_Link(gi, gf);
 		mainApp.getController().askLinkCreation(link);
 	}
 	
+	@FXML
+	public void handleBtnDelLinkAction() {
+		DataType_Link link = _LinkArray.getSelectionModel().getSelectedItem();
+		mainApp.getController().askLinkDeletion(link);
+	}
 	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp = mainApp;

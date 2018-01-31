@@ -64,6 +64,10 @@ public class Controller {
     }
     
     public void askLinkCreation(DataType_Link link) {
+    	if (link == null || link.getGf() == null || link.getGi() == null) {
+    		return;
+    	}
+    	
     	Address adrGF = link.getGf().getAddress();
     	Address adrGI = link.getGi().getAddress();
     	// suppose the gInit is always at the index 0
@@ -78,6 +82,10 @@ public class Controller {
     }
     
     public void askLinkDeletion(DataType_Link link) {
+    	if (link == null || link.getGf() == null || link.getGi() == null) {
+    		return;
+    	}
+    	
     	Address adrGF = link.getGf().getAddress();
     	Address adrGI = link.getGi().getAddress();
     	// suppose the gInit is always at the index 0
@@ -92,6 +100,13 @@ public class Controller {
     }
     
     public void askLinkUpdate(DataType_Link oldLink, DataType_Link newLink) {
+    	if (oldLink == null || oldLink.getGf() == null || oldLink.getGi() == null) {
+    		return;
+    	}
+    	if (newLink == null || newLink.getGf() == null || newLink.getGi() == null) {
+    		return;
+    	}
+    	
     	Address adrGFold = oldLink.getGf().getAddress();
     	Address adrGIold = oldLink.getGi().getAddress();
     	Address adrGFnew = newLink.getGf().getAddress();
