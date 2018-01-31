@@ -2,16 +2,19 @@ package model;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  */
 public class GIArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private final ArrayList<DataType_GI> listGIs;
+    private final ObservableList<DataType_GI> listGIs;
 
     public GIArray(){
-    	listGIs = new ArrayList<>();
+    	listGIs = FXCollections.observableArrayList(new ArrayList<>());
     }
 
     /**
@@ -58,9 +61,9 @@ public class GIArray {
     /**
      * return every GI
      *
-     * @return an ArrayList of GI
+     * @return an ObservableList of GI
      */
-    public ArrayList<DataType_GI> getGIs() {
+    public ObservableList<DataType_GI> getGIs() {
         return listGIs;
     }
 }

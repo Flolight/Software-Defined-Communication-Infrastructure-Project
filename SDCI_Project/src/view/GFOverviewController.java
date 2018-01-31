@@ -3,7 +3,6 @@ package view;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import model.*;
@@ -14,10 +13,6 @@ public class GFOverviewController {
 
 	@FXML
 	private ListView<DataType_GF> _GFArray;
-	
-	// for test
-	@FXML
-	private Button btnAddGI;
 	
 	//reference to the main application
 	private MainApp mainApp;
@@ -42,15 +37,6 @@ public class GFOverviewController {
 			};
 			return cell;
 		});
-		
-		// for test
-		btnAddGI.setOnAction((e)->{
-			DataType_GICreationParam giConfig = new DataType_GICreationParam(2, 10, 10);
-			mainApp.getController().askGICreation(giConfig);
-			System.out.println(mainApp.getController().getTopologyCache().getGIArray().getGIs());
-		});
-		
-
 	}
 	
 	
@@ -76,14 +62,9 @@ public class GFOverviewController {
 					break;
 				}
 			}
-
 			if(!found){
 				_GFArray.getItems().add(gf);
 			}
-
-
 		});
-
-
 	}
 }

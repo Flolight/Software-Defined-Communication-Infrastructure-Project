@@ -33,6 +33,8 @@ public class LoginWindowController {
 	public void handleLoginButtonAction(ActionEvent event){
 		mainApp.getRootLayout().setCenter(null);
 		mainApp.showGFsOverview();
+		mainApp.showGIsOverview();
+		mainApp.showLinksOverview();
 	}
 
 	@FXML

@@ -29,6 +29,12 @@ public class VNFAdapter {
 		sampleData.add(gInit);
 	}
 	
+	/**
+	 * 
+	 * @param params
+	 * @param image
+	 * @return -1 if failure, idGI if succeed
+	 */
 	public int createAndDeployGI(DataType_GICreationParam params, String image) {
 		int idGI = createGI(params);
 		deployGI(idGI, image);
@@ -60,19 +66,28 @@ public class VNFAdapter {
 		sampleData.get(idGI).getContainer().setStatus(Status.Working);
 	}
 	
-	
-	public void stopAndDeleteGI(int idGI) {
-		stopGI(idGI);
-		deleteGI(idGI);
+
+	/**
+	 * 
+	 * @param idGI
+	 * @return the object removed
+	 */
+	public DataType_GI stopAndDeleteGI(int idGI) {
+		DataType_GI value = null;
+		if (stopGI(idGI) >= 0) {
+			value = deleteGI(idGI);
+		}
+		return value;
 	}
 	
-	private void stopGI(int idGI) {
+	private int stopGI(int idGI) {
 		sampleData.get(idGI).getContainer().setStatus(Status.Idle);
+		return 1;
 	}
 	
-	private void deleteGI(int idGI) {
+	private DataType_GI deleteGI(int idGI) {
 		sampleData.get(idGI).getContainer().setStatus(Status.Deleting);
-		sampleData.remove(idGI);
+		return sampleData.remove(idGI);
 	}
 	
 	public DataType_GI getGIInfo(int idGI) {

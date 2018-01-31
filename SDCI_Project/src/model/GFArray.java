@@ -2,16 +2,19 @@ package model;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  */
 public class GFArray {
     /**
      * The list of all final gateway known by the system since launched
      */
-    private final ArrayList<DataType_GF> listGFs;
+    private final ObservableList<DataType_GF> listGFs;
 
     public GFArray(){
-    	listGFs = new ArrayList<>();
+    	listGFs = FXCollections.observableArrayList(new ArrayList<>());
     }
 
     /**
@@ -27,15 +30,17 @@ public class GFArray {
      * Add a GF
      *
      * @param gf, the GF to be added in the list
+     * @return same as listGFs.add(gf)
      */
-    public void addGF(DataType_GF gf){
-    	listGFs.add(gf);
+    public boolean addGF(DataType_GF gf){
+    	return listGFs.add(gf);
     }
     
     /**
      * Delete a GF
      *
      * @param gf, the GF to be deleted from the list
+     * @return same as listGFs.remove(gf)
      */
     public void deleteGF(DataType_GF gf){
     	listGFs.remove(gf);
@@ -58,9 +63,9 @@ public class GFArray {
     /**
      * return every GF
      *
-     * @return an ArrayList of GF
+     * @return an ObservableList of GF
      */
-    public ArrayList<DataType_GF> getGFs() {
+    public ObservableList<DataType_GF> getGFs() {
         return listGFs;
     }
 }

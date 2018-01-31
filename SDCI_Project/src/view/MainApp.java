@@ -4,7 +4,6 @@ import java.io.IOException;
 import controller.Controller;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -84,7 +83,6 @@ public class MainApp extends Application {
 	}
 	
 	public void showGFsOverview(){
-		//Load userOverview
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
@@ -96,30 +94,47 @@ public class MainApp extends Application {
 		
 			GFOverviewController gfcontroller = loader.getController();
 			gfcontroller.setMainApp(this);
-			gfcontroller.bindGFArray(FXCollections.observableArrayList(
-					controller.getTopologyCache().getGFArray().getGFs()));
+			gfcontroller.bindGFArray(controller.getTopologyCache().getGFArray().getGFs());
 		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/*public void showConversationOverview(){
-		//Load userOverview
+	public void showGIsOverview(){
 		try {
+			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("../view/ConversationOverview.fxml"));
-			AnchorPane conversationOverview = (AnchorPane) loader.load();
+			loader.setLocation(MainApp.class.getResource("../view/GIOverview.fxml"));
+			AnchorPane giOverview = (AnchorPane) loader.load();
 		
-			//Set user overview int the center of root layout
-			rootLayout.setCenter(conversationOverview);
+			//Set user overview int the Left of root layout
+			rootLayout.setRight(giOverview);
 		
-			ConversationOverviewController controller = loader.getController();
-			controller.setMainApp(this);
-		
+			GIOverviewController gicontroller = loader.getController();
+			gicontroller.setMainApp(this);
+			gicontroller.bindGIArray(controller.getTopologyCache().getGIArray().getGIs());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
+	
+	public void showLinksOverview(){
+		try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("../view/LinkOverview.fxml"));
+			AnchorPane linkOverview = (AnchorPane) loader.load();
+		
+			//Set user overview int the Left of root layout
+			rootLayout.setBottom(linkOverview);
+		
+			LinkOverviewController linkcontroller = loader.getController();
+			linkcontroller.setMainApp(this);
+			linkcontroller.bindLinkArray(controller.getTopologyCache().getLinkArray().getLinks());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

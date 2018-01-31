@@ -8,6 +8,7 @@ import model.Address;
 import model.DataType_CT;
 import model.DataType_GF;
 import model.DataType_GI;
+import model.DataType_Link;
 import model.DataType_RoutingRule;
 import model.DataType_Server;
 import model.GFArray;
@@ -54,7 +55,8 @@ public class SDNAdapter {
 		DataType_Server server = new DataType_Server(new Address(InetAddress.getByName("10.0.0.240"), 80));
 		
 		GFArray gfArray = new GFArray();
-		gfArray.addGF(new DataType_GF(new Address(InetAddress.getByName("10.0.0.1"), 80), Status.Working, "GF Zone 1"));
+		DataType_GF gf1 = new DataType_GF(new Address(InetAddress.getByName("10.0.0.1"), 80), Status.Working, "GF Zone 1");
+		gfArray.addGF(gf1);
 		gfArray.addGF(new DataType_GF(new Address(InetAddress.getByName("10.0.0.2"), 80), Status.Working, "GF Zone 2"));
 		gfArray.addGF(new DataType_GF(new Address(InetAddress.getByName("10.0.0.3"), 80), Status.Working, "GF Zone 3"));
 		
@@ -65,6 +67,7 @@ public class SDNAdapter {
 		giArray.addGI(giInit);
 		
 		LinkArray linkArray = new LinkArray();
+		linkArray.addLink(new DataType_Link(giInit, gf1));
 		
 		Topology topology = new Topology(server, gfArray, giArray, linkArray);
 		return topology;
