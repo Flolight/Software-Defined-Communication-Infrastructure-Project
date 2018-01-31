@@ -53,7 +53,7 @@ public class GIOverviewController {
 	
 	@FXML
 	public void handleBtnDelGIAction() {
-		int selectedIndex = _GIArray.getSelectionModel().getSelectedIndex();
+		int selectedIndex = getSelectedIndex();
 		if (selectedIndex > 0) {
 			// can not delete GInit in this version
 			mainApp.getController().askGIDeletion(selectedIndex);
@@ -87,5 +87,9 @@ public class GIOverviewController {
 				_GIArray.getItems().add(gi);
 			}
 		});
+	}
+	
+	public int getSelectedIndex() {
+		return _GIArray.getSelectionModel().getSelectedIndex();
 	}
 }

@@ -67,4 +67,8 @@ public class GFOverviewController {
 			}
 		});
 	}
+	
+	public int getSelectedIndex() {
+		return _GFArray.getSelectionModel().getSelectedIndex();
+	}
 }

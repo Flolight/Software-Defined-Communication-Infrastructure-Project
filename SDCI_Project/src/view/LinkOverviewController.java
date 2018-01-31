@@ -46,8 +46,8 @@ public class LinkOverviewController {
 	
 	@FXML
 	public void handleBtnAddLinkAction() {
-		DataType_GF gf = mainApp.getController().getTopologyCache().getGFArray().getGFInfo(1);
-		DataType_GI gi = mainApp.getController().getTopologyCache().getGIArray().getGIInfo(1);
+		DataType_GF gf = mainApp.getController().getTopologyCache().getGFArray().getGFInfo(mainApp.getSelectedIndexGF());
+		DataType_GI gi = mainApp.getController().getTopologyCache().getGIArray().getGIInfo(mainApp.getSelectedIndexGI());
 		DataType_Link link = new DataType_Link(gi, gf);
 		mainApp.getController().askLinkCreation(link);
 	}
@@ -79,5 +79,9 @@ public class LinkOverviewController {
 				_LinkArray.getItems().add(li);
 			}
 		});
+	}
+	
+	public int getSelectedIndex() {
+		return _LinkArray.getSelectionModel().getSelectedIndex();
 	}
 }
