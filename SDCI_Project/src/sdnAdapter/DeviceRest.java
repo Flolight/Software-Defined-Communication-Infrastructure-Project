@@ -8,9 +8,9 @@ import java.io.*;
  
 public class DeviceRest {
     
-    private static String url = "http://10.0.2.15:8080/wm/core/controller/switches/json";
+    // private static String url = "http://10.0.2.15:8080/wm/core/controller/switches/json";
     
-    public static void main(String[] args) {
+    public static byte[] sendGet(String url) {
      
         // Create an instance of HttpClient.
         HttpClient client = new HttpClient();
@@ -35,6 +35,8 @@ public class DeviceRest {
             //Deal with the response.
             //Use caution: ensure correct character encoding and is not binary data
             System.out.println(new String(responseBody));
+            
+            return responseBody;
         } catch (HttpException e) {
             System.err.println("Fatal protocol violation: " + e.getMessage());
             e.printStackTrace();
@@ -45,5 +47,7 @@ public class DeviceRest {
             // Release the connection
             method.releaseConnection();
         }
+        
+        return null;
     }
 }
