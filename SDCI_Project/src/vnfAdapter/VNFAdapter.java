@@ -19,10 +19,11 @@ public class VNFAdapter {
 	 * Simulate data from vnf orchestrator
 	 */
 	private final ArrayList<DataType_GI> sampleData;
+	// private final VNFDocker vnfDocker;
 
 	public VNFAdapter() {
-		// TODO Auto-generated constructor stub
 		sampleData = new ArrayList<>();
+		// vnfDocker = new VNFDocker();
 	}
 	
 	public void addGInit(DataType_GI gInit) {
@@ -44,6 +45,9 @@ public class VNFAdapter {
 	
 	private static int countIP = 5;
 	private int createGI(DataType_GICreationParam params) {
+		// String containerId = vnfDocker.createContainer(80, 8080);
+		// DataType_CT ct = //Analyze containerInfo
+		
 		// simulate creation GI
 		int idGI = -1;
 		try {
