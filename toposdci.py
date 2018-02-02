@@ -19,14 +19,19 @@ class TopoSdci (Topo):
 		gf1 = self.addDocker('gf1', ip='10.0.0.4', dimage="flolight/gf1")
 		gf2 = self.addDocker('gf2', ip='10.0.0.5', dimage="flolight/gf2")
 		gf3 = self.addDocker('gf3', ip='10.0.0.6', dimage="flolight/gf3")
+		dc  = self.addHost('dc',  ip='10.0.0.8', dimage="docker:dind")
 
 		
 		s1  = self.addSwitch( 's1' )
+		s2  = self.addSwitch( 's2' )
 
 		self.addLink(gf1, s1)
 		self.addLink(gf2, s1)
 		self.addLink(gf3, s1)
 		self.addLink(gi, s1)
 		self.addLink(appserver, s1)
+		self.addLink(s1, s2)
+		self.addLink(dc, s2)
+
 		
 topos = { 'toposdci': ( lambda: TopoSdci() ) }
