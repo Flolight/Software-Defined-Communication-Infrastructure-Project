@@ -68,4 +68,23 @@ public class GFArray {
     public ObservableList<DataType_GF> getGFs() {
         return listGFs;
     }
+    
+    /**
+     * Returns a GF searched by name
+     *
+     * @param id, the GF Id in the list
+     * @return The GF if it was found | null if not
+     */
+    public DataType_GF getGFByName(String name){
+    	
+    	DataType_GF result = null;
+
+        for(DataType_GF gf : this.listGFs){
+        	if(gf.getName().equals(name)){
+        		result = gf;
+        	}
+        }
+        
+        return result;
+    }
 }

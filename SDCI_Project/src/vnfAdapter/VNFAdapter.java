@@ -52,7 +52,6 @@ public class VNFAdapter {
 		// DataType_CT ct = //Analyze containerInfo
 		// simulate creation GI
 		int idGI = -1;
-		System.out.println("TEST : "+HasSameName(params.getName(),this.sampleData));
 		if(HasSameName(params.getName(),this.sampleData)){
 			return idGI;
 		}
