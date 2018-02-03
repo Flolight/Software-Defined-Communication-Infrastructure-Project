@@ -9,7 +9,8 @@
    <children>
       <Label text="Link List" />
       <ListView fx:id="_LinkArray" AnchorPane.topAnchor="20.0"/>
-      <Button fx:id="btnAddLink" text="addLink" onAction="#handleBtnAddLinkAction" AnchorPane.rightAnchor="30"/>
-      <Button fx:id="btnDelLink" text="delLink" onAction="#handleBtnDelLinkAction" AnchorPane.rightAnchor="30" AnchorPane.topAnchor="50"/>
+      <Button fx:id="btnAddLink" text="Add Link" onAction="#handleBtnAddLinkAction" AnchorPane.rightAnchor="30"/>
+      <Button fx:id="btnDelLink" text="Delete Link" onAction="#handleBtnDelLinkAction" AnchorPane.rightAnchor="30" AnchorPane.topAnchor="50"/>
+      <Button fx:id="btnEditLink" text="Edit Link" onAction="#handleBtnEditLinkAction" AnchorPane.rightAnchor="30" AnchorPane.topAnchor="100"/>
    </children>
 </AnchorPane>

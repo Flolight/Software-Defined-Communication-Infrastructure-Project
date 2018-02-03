@@ -22,18 +22,22 @@ public class DataType_GI {
 	 */
 	public DataType_GI(DataType_CT container){
 		this.container = container;
-		this.name = "GI_" + OCCURRENCE;
+		this.setName("GI_" + OCCURRENCE);
 		DataType_GI.OCCURRENCE +=1;
 	}
 	
 	public DataType_GI(DataType_CT container, String name){
 		this.container = container;
-		this.name = name;
+		this.setName(name);
 		DataType_GI.OCCURRENCE +=1;
 	}
 
 	public String getName() {
 		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public DataType_CT getContainer() {

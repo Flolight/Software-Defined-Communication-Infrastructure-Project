@@ -35,5 +35,23 @@ public class DataType_Link {
 	public void setGf(DataType_GF gf) {
 		this.gf = gf;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (obj == null) {
+	        return false;
+	    }
+	    if (!DataType_Link.class.isAssignableFrom(obj.getClass())) {
+	        return false;
+	    }
+	    final DataType_Link other = (DataType_Link) obj;
+	    if ((this.getGi() == null) ? (other.getGi() != null) : !this.getGi().getName().equals(other.getGi().getName())) {
+	        return false;
+	    }
+	    if ((this.getGf() == null) ? (other.getGf() != null) : !this.getGf().getName().equals(other.getGf().getName())) {
+	        return false;
+	    }
+	    return true;
+	}
 
 }

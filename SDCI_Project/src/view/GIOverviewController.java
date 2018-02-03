@@ -1,11 +1,14 @@
 package view;
 
+import java.util.Optional;
+
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextInputDialog;
 import model.*;
 
 
@@ -47,8 +50,17 @@ public class GIOverviewController {
 	
 	@FXML
 	public void handleBtnAddGIAction() {
-		DataType_GICreationParam giConfig = new DataType_GICreationParam(2, 10, 10);
-		mainApp.getController().askGICreation(giConfig);
+		TextInputDialog dialog = new TextInputDialog("");
+		dialog.setTitle("Intermediate Gateway Creation");
+		dialog.setContentText("Please enter the GI name:");
+
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+		    DataType_GICreationParam giConfig = new DataType_GICreationParam(2, 10, 10, result.get());
+			mainApp.getController().askGICreation(giConfig);
+		}
+		
+		
 	}
 	
 	@FXML
@@ -58,6 +70,27 @@ public class GIOverviewController {
 			// can not delete GInit in this version
 			mainApp.getController().askGIDeletion(selectedIndex);
 		}
+	}
+	
+	@FXML
+	public void handleBtnEditGIAction() {
+		int selectedIndex = getSelectedIndex();
+		if(selectedIndex==0){
+			return;
+		}
+		
+		DataType_GI gi = mainApp.getController().getTopologyCache().getGIArray().getGIInfo(selectedIndex);
+		TextInputDialog dialog = new TextInputDialog(gi.getName());
+		dialog.setTitle("Edit Intermediate GI name");
+		dialog.setContentText("Please enter the name:");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			mainApp.getController().getTopologyCache().getGIArray().updateGIName(gi.getName(), result.get());
+			mainApp.gicontroller.refresh();
+		}
+
 	}
 	
 	

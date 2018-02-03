@@ -27,6 +27,19 @@ public class GIArray {
     }
     
     /**
+     * Set the name of GI
+     * @param oldName
+     * @param newName
+     */
+    public void updateGIName(String oldName, String newName){
+    	for(DataType_GI gi : listGIs){
+    		if(gi.getName().equals(oldName)){
+    			gi.setName(newName);
+    		}
+    	}
+    }
+    
+    /**
      * Add a GI
      *
      * @param gi, the GI to be added in the list
@@ -66,4 +79,24 @@ public class GIArray {
     public ObservableList<DataType_GI> getGIs() {
         return listGIs;
     }
+    
+    /**
+     * Returns a GI searched by name
+     *
+     * @param id, the GI Id in the list
+     * @return The GI if it was found | null if not
+     */
+    public DataType_GI getGIByName(String name){
+    	
+    	DataType_GI result = null;
+
+        for(DataType_GI gi : this.listGIs){
+        	if(gi.getName().equals(name)){
+        		result = gi;
+        	}
+        }
+        
+        return result;
+    }
+    
 }

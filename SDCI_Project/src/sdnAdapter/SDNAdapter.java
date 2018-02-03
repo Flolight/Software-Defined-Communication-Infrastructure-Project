@@ -85,6 +85,7 @@ public class SDNAdapter {
 		giArray.addGI(giInit);
 		
 		LinkArray linkArray = new LinkArray();
+		//linkArray.addLink(new DataType_Link(giInit, gf1));
 		
 		Topology topology = new Topology(server, gfArray, giArray, linkArray);
 		return topology;

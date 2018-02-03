@@ -58,4 +58,14 @@ public class LinkArray {
     public ObservableList<DataType_Link> getLinks() {
         return listLinks;
     }
+    
+    public boolean IsUniqueLink (DataType_Link link){
+    	boolean found = false;
+    	for (DataType_Link l: this.listLinks) {
+		    if (l.equals(link)) {
+		    	found = true;
+		    }
+		};
+		return found;
+    }
 }
