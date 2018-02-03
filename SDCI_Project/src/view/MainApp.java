@@ -10,73 +10,71 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-
 public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 	private Controller controller;
-	
+
 	LoginWindowController logincontroller;
 	GFOverviewController gfcontroller;
 	GIOverviewController gicontroller;
 	LinkOverviewController linkcontroller;
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("SDCI mini project");
-		
+
 		initRootLayout();
 		initController();
-		
+
 		showSplashScreen();
 	}
-	
-	public void initRootLayout(){
-		try{
+
+	public void initRootLayout() {
+		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("../view/RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
-			
-			//Show the scene
+
+			// Show the scene
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
-			primaryStage.setOnCloseRequest(e->{
+			primaryStage.setOnCloseRequest(e -> {
 				Platform.exit();
 				System.out.println("Terminating ...");
 				System.exit(1);
 			});
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void initController() {
 		controller = Controller.getInstance();
 	}
-	
+
 	public BorderPane getRootLayout() {
 		return rootLayout;
 	}
-	
+
 	public Controller getController() {
 		return controller;
 	}
-	
-	
-	public void showSplashScreen(){
-		//Load userOverview
+
+	public void showSplashScreen() {
+		// Load userOverview
 		try {
 
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("../view/LoginWindow.fxml"));
 			BorderPane loginWindow = (BorderPane) loader.load();
 
-			//Set user overview in the center of root layout
+			// Set user overview in the center of root layout
 			rootLayout.setCenter(loginWindow);
 
 			logincontroller = loader.getController();
@@ -86,36 +84,36 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-	public void showGFsOverview(){
+
+	public void showGFsOverview() {
 		try {
-			
+
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("../view/GFOverview.fxml"));
 			AnchorPane gfOverview = (AnchorPane) loader.load();
-		
-			//Set user overview int the Left of root layout
+
+			// Set user overview int the Left of root layout
 			rootLayout.setLeft(gfOverview);
-		
+
 			gfcontroller = loader.getController();
 			gfcontroller.setMainApp(this);
 			gfcontroller.bindGFArray(controller.getTopologyCache().getGFArray().getGFs());
-		
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void showGIsOverview(){
+
+	public void showGIsOverview() {
 		try {
-			
+
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("../view/GIOverview.fxml"));
 			AnchorPane giOverview = (AnchorPane) loader.load();
-		
-			//Set user overview int the Left of root layout
+
+			// Set user overview int the Left of root layout
 			rootLayout.setRight(giOverview);
-		
+
 			gicontroller = loader.getController();
 			gicontroller.setMainApp(this);
 			gicontroller.bindGIArray(controller.getTopologyCache().getGIArray().getGIs());
@@ -123,17 +121,17 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-	public void showLinksOverview(){
+
+	public void showLinksOverview() {
 		try {
-			
+
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("../view/LinkOverview.fxml"));
 			AnchorPane linkOverview = (AnchorPane) loader.load();
-		
-			//Set user overview int the Left of root layout
+
+			// Set user overview int the Left of root layout
 			rootLayout.setBottom(linkOverview);
-		
+
 			linkcontroller = loader.getController();
 			linkcontroller.setMainApp(this);
 			linkcontroller.bindLinkArray(controller.getTopologyCache().getLinkArray().getLinks());
@@ -141,15 +139,15 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public int getSelectedIndexGF() {
 		return gfcontroller.getSelectedIndex();
 	}
-	
+
 	public int getSelectedIndexGI() {
 		return gicontroller.getSelectedIndex();
 	}
-	
+
 	public int getSelectedIndexLink() {
 		return linkcontroller.getSelectedIndex();
 	}

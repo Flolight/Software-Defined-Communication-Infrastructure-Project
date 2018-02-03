@@ -8,10 +8,13 @@ public class DataType_GICreationParam {
 	
 	private int maxDisk;
 	
-	public DataType_GICreationParam(int nbCPU, int maxRAM, int maxDisk){
+	private String name;
+	
+	public DataType_GICreationParam(int nbCPU, int maxRAM, int maxDisk, String name){
 		this.setNbCPU(nbCPU);
 		this.setMaxRAM(maxRAM);
 		this.setMaxDisk(maxDisk);
+		this.setName(name);
 	}
 
 	public int getNbCPU() {
@@ -36,5 +39,13 @@ public class DataType_GICreationParam {
 
 	private void setMaxDisk(int maxDisk) {
 		this.maxDisk = maxDisk;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

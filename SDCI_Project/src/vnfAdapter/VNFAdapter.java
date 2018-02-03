@@ -37,7 +37,10 @@ public class VNFAdapter {
 	 * @return -1 if failure, idGI if succeed
 	 */
 	public int createAndDeployGI(DataType_GICreationParam params, String image) {
-		int idGI = createGI(params);
+		int idGI = -1;
+		
+		idGI = createGI(params);
+		if(idGI<0){return idGI;}
 		deployGI(idGI, image);
 		
 		return idGI;
@@ -47,23 +50,37 @@ public class VNFAdapter {
 	private int createGI(DataType_GICreationParam params) {
 		// String containerId = vnfDocker.createContainer(80, 8080);
 		// DataType_CT ct = //Analyze containerInfo
-		
 		// simulate creation GI
 		int idGI = -1;
-		try {
+		System.out.println("TEST : "+HasSameName(params.getName(),this.sampleData));
+		if(HasSameName(params.getName(),this.sampleData)){
+			return idGI;
+		}
+		try 
+		{
 			Address adr = new Address(InetAddress.getByName("10.0.0." + countIP), 8080);
 			countIP += 1;
 			DataType_CT ct = new DataType_CT(adr, Status.Creating, params.getNbCPU(), params.getMaxRAM(), params.getMaxDisk());
-			DataType_GI gi = new DataType_GI(ct);
+			DataType_GI gi = new DataType_GI(ct, params.getName());
 			sampleData.add(gi);
 			ct.setStatus(Status.Idle);
 			idGI = sampleData.indexOf(gi);
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
 		
 		return idGI;
+	}
+	
+	private boolean HasSameName(String name, ArrayList<DataType_GI> list){
+		boolean found = false;
+		for (DataType_GI currentGI: list) {
+		    if (currentGI.getName().equals(name)) {
+		    	found = true;
+		    }
+		};
+		return found;
 	}
 	
 	private void deployGI(int idGI, String image) {

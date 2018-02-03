@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import model.Address;
 import model.DataType_GI;
 import model.DataType_GICreationParam;
@@ -49,6 +51,15 @@ public class Controller {
 
 	public void askGICreation(DataType_GICreationParam giConfig) {
     	int idGI = vnf.createAndDeployGI(giConfig, IMAGE_GI);
+    	if(idGI<0){
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setTitle("Error while creating");
+    		alert.setHeaderText("Same name detected !!");
+    		alert.setContentText("It seems there is already a GI with this name, please choose a unique name!");
+
+    		alert.showAndWait();
+    		return;
+    	}
     	if (idGI >= 0) {
     		// update only if succeed
     		topologyCache.getGIArray().addGI(vnf.getGIInfo(idGI));
@@ -65,6 +76,27 @@ public class Controller {
     
     public void askLinkCreation(DataType_Link link) {
     	if (link == null || link.getGf() == null || link.getGi() == null) {
+    		return;
+    	}
+    	
+    	if(link.getGi().getName().equals("Initial Gateway")){
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setTitle("Error while creating a Link");
+    		alert.setHeaderText("Link with initial gateway");
+    		alert.setContentText("If the link is not displayed in the link list, it is because final gateways are linked to the initial gateway by default");
+
+    		alert.showAndWait();
+    		return;
+    	}
+    	
+    	//Testing if the link already exists in the list
+    	if(topologyCache.getLinkArray().IsUniqueLink(link)){
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setTitle("Error while creating a Link");
+    		alert.setHeaderText("Not unique link detected");
+    		alert.setContentText("There is arleady a link between the two elements : Ceation ABORTED!");
+
+    		alert.showAndWait();
     		return;
     	}
     	
