@@ -17,8 +17,8 @@ import com.github.dockerjava.core.DockerClientConfig;
 
 public class VNFDocker {
 	
-	private static final String ctrldockerurl = "localhost:2375";
-	private static final String img = "sampleImg";
+	private static final String ctrldockerurl = "10.0.0.8";
+	private static final String img = "flolight/gi";
 	
 	private DockerClient dockerClient;
 
@@ -26,6 +26,12 @@ public class VNFDocker {
 		DockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
 				.withDockerHost("tcp://" + ctrldockerurl).withDockerTlsVerify(false).build();
 		this.dockerClient = DockerClientBuilder.getInstance(config).build();
+	}
+	
+	public String createContainer() {
+		CreateContainerResponse container = dockerClient.createContainerCmd(img).exec();
+		System.out.println("[VNFDocker]create Id : " + container.getId());
+		return container.getId();
 	}
 	
 	public String createContainer(int port, int bindport) {

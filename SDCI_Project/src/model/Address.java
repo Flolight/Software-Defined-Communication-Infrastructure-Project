@@ -30,7 +30,12 @@ public class Address {
 		this.ipAddress = ipAddress;
 		this.port = port;
 		this.stringPropertyAddress = new SimpleStringProperty(new String(this.toString()));
-		
+	}
+	
+	public Address(InetAddress ipAddress){
+		this.ipAddress = ipAddress;
+		this.port = 80;
+		this.stringPropertyAddress = new SimpleStringProperty(new String(this.toString()));
 	}
 
 	public InetAddress getIpAdress() {
