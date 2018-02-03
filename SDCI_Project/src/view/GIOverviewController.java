@@ -72,6 +72,27 @@ public class GIOverviewController {
 		}
 	}
 	
+	@FXML
+	public void handleBtnEditGIAction() {
+		int selectedIndex = getSelectedIndex();
+		if(selectedIndex==0){
+			return;
+		}
+		
+		DataType_GI gi = mainApp.getController().getTopologyCache().getGIArray().getGIInfo(selectedIndex);
+		TextInputDialog dialog = new TextInputDialog(gi.getName());
+		dialog.setTitle("Edit Intermediate GI name");
+		dialog.setContentText("Please enter the name:");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			mainApp.getController().getTopologyCache().getGIArray().updateGIName(gi.getName(), result.get());
+			mainApp.gicontroller.refresh();
+		}
+
+	}
+	
 	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp = mainApp;

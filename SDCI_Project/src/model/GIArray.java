@@ -27,6 +27,19 @@ public class GIArray {
     }
     
     /**
+     * Set the name of GI
+     * @param oldName
+     * @param newName
+     */
+    public void updateGIName(String oldName, String newName){
+    	for(DataType_GI gi : listGIs){
+    		if(gi.getName().equals(oldName)){
+    			gi.setName(newName);
+    		}
+    	}
+    }
+    
+    /**
      * Add a GI
      *
      * @param gi, the GI to be added in the list

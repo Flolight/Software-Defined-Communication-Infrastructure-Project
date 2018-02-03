@@ -11,5 +11,6 @@
       <ListView fx:id="_GIArray" AnchorPane.topAnchor="20.0"/>
       <Button fx:id="btnAddGI" text="Add GI" onAction="#handleBtnAddGIAction" AnchorPane.rightAnchor="30"/>
       <Button fx:id="btnDelGI" text="Delete GI" onAction="#handleBtnDelGIAction" AnchorPane.rightAnchor="30" AnchorPane.topAnchor="50"/>
+      <Button fx:id="btnEditGI" text="Edit GI" onAction="#handleBtnEditGIAction" AnchorPane.rightAnchor="30" AnchorPane.topAnchor="100"/>
    </children>
 </AnchorPane>
