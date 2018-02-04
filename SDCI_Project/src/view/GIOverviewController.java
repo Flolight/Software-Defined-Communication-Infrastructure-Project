@@ -75,10 +75,9 @@ public class GIOverviewController {
 	@FXML
 	public void handleBtnEditGIAction() {
 		int selectedIndex = getSelectedIndex();
-		if(selectedIndex==0){
+		if(selectedIndex<=0){
 			return;
 		}
-		
 		DataType_GI gi = mainApp.getController().getTopologyCache().getGIArray().getGIInfo(selectedIndex);
 		TextInputDialog dialog = new TextInputDialog(gi.getName());
 		dialog.setTitle("Edit Intermediate GI name");
