@@ -12,7 +12,8 @@ java -jar myTarget/sdncontroller.jar
 Launching the [cleanAll.sh](cleanAll.sh) script with root privileges will clean all the environment (docker containers, images and mininet topology).
 
 ### Creating the mininet topology
-In order to create the mininet topology, just run the [buildTopo.sh](buildTopo.sh) script.
+In order to create the mininet topology, change the sdncontroller address in the [buildTopo.sh](buildTopo.sh) with the one presented by the enp0sx interface of your machine.
+Then just run the [buildTopo.sh](buildTopo.sh) script.
 ### Start the different instances
 #### The application server
 ```
@@ -35,6 +36,11 @@ sudo docker exec -it mn.appserver sh -c "cd /workingdir && java -jar IoTApp1.jar
 sudo docker exec -it mn.gf1 sh -c "cd /workingdir && java -jar IoTDevice.jar"
 ```
 This last program is not currently working due to a connectivity error...
+
+#### The datacenter
+```
+docker run --priviledged -h h1 --name=mininet-h1 -ti  --net='none' ubuntu /bin/bash
+```
 ### Prerequisites
 
 What things you need to install the software and how to install them
