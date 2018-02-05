@@ -19,11 +19,11 @@ public class VNFAdapter {
 	 * Simulate data from vnf orchestrator
 	 */
 	private final ArrayList<DataType_GI> sampleData;
-	// private final VNFDocker vnfDocker;
+	private final VNFDocker vnfDocker;
 
 	public VNFAdapter() {
 		sampleData = new ArrayList<>();
-		// vnfDocker = new VNFDocker();
+		vnfDocker = new VNFDocker();
 	}
 	
 	public void addGInit(DataType_GI gInit) {
@@ -46,7 +46,7 @@ public class VNFAdapter {
 		return idGI;
 	}
 	
-	private static int countIP = 5;
+	private static int countIP = 9;
 	private int createGI(DataType_GICreationParam params) {
 		// String containerId = vnfDocker.createContainer(80, 8080);
 		// DataType_CT ct = //Analyze containerInfo
@@ -62,6 +62,9 @@ public class VNFAdapter {
 			DataType_CT ct = new DataType_CT(adr, Status.Creating, params.getNbCPU(), params.getMaxRAM(), params.getMaxDisk());
 			DataType_GI gi = new DataType_GI(ct, params.getName());
 			sampleData.add(gi);
+			// implements
+			// vnfDocker.createContainer(8234, 9090);
+			// end
 			ct.setStatus(Status.Idle);
 			idGI = sampleData.indexOf(gi);
 		} 

@@ -15,9 +15,11 @@ import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
 
+import sdnAdapter.DeviceRest;
+
 public class VNFDocker {
 	
-	private static final String ctrldockerurl = "10.0.0.8";
+	private static final String ctrldockerurl = DeviceRest.DC_IPV4+":2375";
 	private static final String img = "flolight/gi";
 	
 	private DockerClient dockerClient;
@@ -35,7 +37,7 @@ public class VNFDocker {
 	}
 	
 	public String createContainer(int port, int bindport) {
-		ExposedPort http = ExposedPort.tcp(port);
+		ExposedPort http = ExposedPort.tcp(2376);
 		Ports portBinding = new Ports();
 		portBinding.bind(http, Binding.bindPort(bindport));
 
