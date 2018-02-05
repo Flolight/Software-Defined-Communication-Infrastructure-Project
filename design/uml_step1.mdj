@@ -56736,7 +56736,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFhYV6dNDJVx7M="
 							},
-							"name": "Collaboration1",
+							"name": "UC3-Monitoring",
 							"ownedElements": [
 								{
 									"_type": "UMLInteraction",
