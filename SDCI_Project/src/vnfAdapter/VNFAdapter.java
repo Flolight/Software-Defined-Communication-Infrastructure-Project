@@ -23,7 +23,6 @@ public class VNFAdapter {
 
 	public VNFAdapter() {
 		sampleData = new ArrayList<>();
-		
 		vnfDocker = new VNFDocker();
 	}
 	
@@ -64,7 +63,7 @@ public class VNFAdapter {
 			DataType_GI gi = new DataType_GI(ct, params.getName());
 			sampleData.add(gi);
 			// implements
-			//vnfDocker.createContainer(8234, 9090);
+			// vnfDocker.createContainer(8234, 9090);
 			// end
 			ct.setStatus(Status.Idle);
 			idGI = sampleData.indexOf(gi);

@@ -19,7 +19,7 @@ import sdnAdapter.DeviceRest;
 
 public class VNFDocker {
 	
-	private static final String ctrldockerurl = DeviceRest.DC_IPV4+":2376";
+	private static final String ctrldockerurl = DeviceRest.DC_IPV4+":2375";
 	private static final String img = "flolight/gi";
 	
 	private DockerClient dockerClient;
