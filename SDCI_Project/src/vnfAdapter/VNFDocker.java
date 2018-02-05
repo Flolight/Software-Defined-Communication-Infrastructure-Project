@@ -37,11 +37,12 @@ public class VNFDocker {
 	}
 	
 	public String createContainer(int port, int bindport) {
-		ExposedPort http = ExposedPort.tcp(2376);
+		ExposedPort http = ExposedPort.tcp(port);
 		Ports portBinding = new Ports();
 		portBinding.bind(http, Binding.bindPort(bindport));
 
-		CreateContainerResponse container = dockerClient.createContainerCmd(img). withExposedPorts(http).withPortBindings(portBinding).exec();
+		CreateContainerResponse container = dockerClient.createContainerCmd(img).
+				withExposedPorts(http).withPortBindings(portBinding).exec();
 		System.out.println("[VNFDocker]create Id : " + container.getId());
 		return container.getId();
 	}
@@ -51,8 +52,9 @@ public class VNFDocker {
 		Ports portBinding = new Ports();
 		portBinding.bind(http, Binding.bindPort(bindport));
 
-		CreateContainerResponse container = dockerClient.createContainerCmd(img). withExposedPorts(http).withPortBindings(portBinding).withCmd("sh", "/home/" + Paths.get(scriptPath).getFileName().toString()).exec();
-		    dockerClient.copyArchiveToContainerCmd(container.getId()).withHostResource(scriptPath).withRemotePath("/home").exec();
+		CreateContainerResponse container = dockerClient.createContainerCmd(img). withExposedPorts(http).withPortBindings(portBinding).
+				withCmd("sh", "/home/" + Paths.get(scriptPath).getFileName().toString()).exec();
+	    dockerClient.copyArchiveToContainerCmd(container.getId()).withHostResource(scriptPath).withRemotePath("/home").exec();
 
 		dockerClient.startContainerCmd(container.getId()).exec();
 	}
@@ -89,7 +91,9 @@ public class VNFDocker {
 	public static void main(String[] args) {
 		VNFDocker example = new VNFDocker();
 		try {
-			String containerId = example.createContainer(80, 8080);
+			System.out.println("begin");
+			String containerId = example.createContainer(2375, 8080);
+			System.out.println("end");
 			List<Container> list = example.listContainers(true);
 			list.forEach((e)-> {System.out.println("id:"+e.getId());});
 			example.startContainer(containerId);

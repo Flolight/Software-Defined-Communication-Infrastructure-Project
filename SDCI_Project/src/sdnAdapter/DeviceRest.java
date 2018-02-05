@@ -2,7 +2,6 @@ package sdnAdapter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
@@ -21,8 +20,12 @@ public class DeviceRest {
 	}
 	
 	// Network setting
-	public static final String LOCAL_IPV4 = "localhost";
+	public static final String LOCAL_IPV4 = "10.211.55.8";
 	public static final String STATIC_ENTRY_PUSHER_URL = "http://"+LOCAL_IPV4+":8080/wm/staticentrypusher/json";
+	public static final String STATIC_ENTRY_PUSHER_LIST_URL = "http://"+LOCAL_IPV4+":8080/wm/staticentrypusher/list/all/json";
+	public static final String DEFAULT_SERVER_PORT = "8080";
+	public static final String DEFAULT_IOT_PORT = "8080";
+	public static final String DEFAULT_GINIT_PORT = "8080";
 	
 	public static final String SERVER_IPV4 = "10.0.0.2";
 	public static final String SERVER_SWITCH_PORT = "5";
@@ -50,7 +53,13 @@ public class DeviceRest {
 	public static final String METHOD_GET = "GET";
 	public static final String METHOD_DELETE = "DELETE";
 	
-	
+	/**
+	 * 
+	 * @param method
+	 * @param url
+	 * @param jsonObj null if not POST
+	 * @return
+	 */
 	public static String send(String method, String url, JSONObject jsonObj) {
 		HttpClient client = HttpClientBuilder.create().build();
 		
@@ -91,10 +100,20 @@ public class DeviceRest {
 		return data;
 	}
 	
-	private static int nameCounter = 0;
-	public static JSONObject createRequestObject(int switchNumber, String inPort,
-			String ipSrc, String ipDst, String outPort) {
+	public static String sendGet(String url) {
+		return DeviceRest.send(METHOD_GET, url, null);
+	}
+	
+	public static JSONObject createRequestObject(String name, int switchNumber,
+			String ipSrc, String portSrc, String ipDst, String portDst, String inputSwPort,
+			String setIpSrc, String setPortSrc, String setIpDst, String setPortDst, String outputSwPort) {
 		JSONObject obj = new JSONObject();
+		obj.put("name", name);
+		obj.put("cookie", "0");
+		obj.put("priority", "32767");
+		obj.put("eth_type", "0x0800");
+		obj.put("active", "true");
+		obj.put("ip_proto", "0x11"); //TCP 0x06, UDP 0x11
 		
 		String targetSwitchId;
 		switch (switchNumber) {
@@ -108,15 +127,34 @@ public class DeviceRest {
 			targetSwitchId = "";
 		}
 		obj.put("switch", targetSwitchId);
-		obj.put("name", "flow-"+(nameCounter++));
-		obj.put("priority", "36000");
-		obj.put("in_port", inPort);
-		obj.put("eth_type", "0x0800");
+		
 		obj.put("ipv4_src", ipSrc);
+		//obj.put("udp_src", portSrc);
 		obj.put("ipv4_dst", ipDst);
-		obj.put("actions", "output="+outPort);
+		//obj.put("udp_dst", portDst);
+		obj.put("in_port", inputSwPort);
+		
+		obj.put("actions", "set_field=ipv4_src->" + setIpSrc + ","
+				//+ "set_field=udp_src->" + setPortSrc + ","
+				+ "set_field=ipv4_dst->" + setIpDst + ","
+				//+ "set_field=udp_dst->"+setPortDst + ","
+				+ "output="+outputSwPort);
 		
 		return obj;
 	}
 	
+	public static JSONObject createDropAllObject(String name, String swID) {
+		JSONObject obj = new JSONObject();
+		obj.put("name", name);
+		obj.put("switch", swID);
+		obj.put("cookie", "0");
+		obj.put("priority", "30000");
+		obj.put("eth_type", "0x0800");
+		obj.put("ipv4_src", "10.0.0.0/255.0.0.0");
+		obj.put("ipv4_dst", "10.0.0.0/255.0.0.0");
+		obj.put("active", "true");
+		//obj.put("actions", "");
+		
+		return obj;
+	}
 }
