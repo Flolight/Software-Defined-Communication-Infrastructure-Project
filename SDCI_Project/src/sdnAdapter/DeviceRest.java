@@ -20,7 +20,7 @@ public class DeviceRest {
 	}
 	
 	// Network setting
-	public static final String LOCAL_IPV4 = "10.211.55.8";
+	public static final String LOCAL_IPV4 = "10.0.2.15";
 	public static final String STATIC_ENTRY_PUSHER_URL = "http://"+LOCAL_IPV4+":8080/wm/staticentrypusher/json";
 	public static final String STATIC_ENTRY_PUSHER_LIST_URL = "http://"+LOCAL_IPV4+":8080/wm/staticentrypusher/list/all/json";
 	public static final String DEFAULT_SERVER_PORT = "8080";

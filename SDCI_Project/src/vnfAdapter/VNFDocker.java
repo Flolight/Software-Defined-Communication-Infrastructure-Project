@@ -19,8 +19,9 @@ import sdnAdapter.DeviceRest;
 
 public class VNFDocker {
 	
-	private static final String ctrldockerurl = DeviceRest.DC_IPV4+":2375";
-	private static final String img = "flolight/gi";
+	public static final int DC_PORT = 2375;
+	private static final String ctrldockerurl = "172.17.0.1"+":"+DC_PORT;
+	private static final String img = "sdciproject/gi";
 	
 	private DockerClient dockerClient;
 
@@ -28,12 +29,6 @@ public class VNFDocker {
 		DockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
 				.withDockerHost("tcp://" + ctrldockerurl).withDockerTlsVerify(false).build();
 		this.dockerClient = DockerClientBuilder.getInstance(config).build();
-	}
-	
-	public String createContainer() {
-		CreateContainerResponse container = dockerClient.createContainerCmd(img).exec();
-		System.out.println("[VNFDocker]create Id : " + container.getId());
-		return container.getId();
 	}
 	
 	public String createContainer(int port, int bindport) {
@@ -92,7 +87,7 @@ public class VNFDocker {
 		VNFDocker example = new VNFDocker();
 		try {
 			System.out.println("begin");
-			String containerId = example.createContainer(2375, 8080);
+			String containerId = example.createContainer(2375, 28080);
 			System.out.println("end");
 			List<Container> list = example.listContainers(true);
 			list.forEach((e)-> {System.out.println("id:"+e.getId());});

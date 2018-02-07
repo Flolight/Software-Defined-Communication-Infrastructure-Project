@@ -9,6 +9,7 @@ import model.DataType_CT;
 import model.DataType_GI;
 import model.DataType_GICreationParam;
 import model.Status;
+import sdnAdapter.DeviceRest;
 
 public class VNFAdapter {
 	
@@ -46,7 +47,7 @@ public class VNFAdapter {
 		return idGI;
 	}
 	
-	private static int countIP = 9;
+	private static int countBindPort = 28001;
 	private int createGI(DataType_GICreationParam params) {
 		// String containerId = vnfDocker.createContainer(80, 8080);
 		// DataType_CT ct = //Analyze containerInfo
@@ -57,13 +58,13 @@ public class VNFAdapter {
 		}
 		try 
 		{
-			Address adr = new Address(InetAddress.getByName("10.0.0." + countIP), 8080);
-			countIP += 1;
+			Address adr = new Address(InetAddress.getByName(DeviceRest.DC_IPV4), countBindPort);
 			DataType_CT ct = new DataType_CT(adr, Status.Creating, params.getNbCPU(), params.getMaxRAM(), params.getMaxDisk());
 			DataType_GI gi = new DataType_GI(ct, params.getName());
 			sampleData.add(gi);
 			// implements
-			// vnfDocker.createContainer(8234, 9090);
+			vnfDocker.createContainer(VNFDocker.DC_PORT, countBindPort);
+			countBindPort ++;
 			// end
 			ct.setStatus(Status.Idle);
 			idGI = sampleData.indexOf(gi);
