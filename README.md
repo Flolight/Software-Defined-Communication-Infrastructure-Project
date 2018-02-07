@@ -31,7 +31,7 @@ sudo docker exec mn.gfx sh -c "cd /workingdir/mn-cse && ./start.sh"
 ```
 sudo docker exec -it mn.appserver sh -c "cd /workingdir && java -jar IoTApp1.jar"
 ```
-#### The IoTDevice (not working yet)
+#### The IoTDevice
 ```
 sudo docker exec -it mn.gf1 sh -c "cd /workingdir && java -jar IoTDevice.jar"
 ```
@@ -77,18 +77,12 @@ FileName /home/sdnvm/share vboxsf defaults 0 0
 
 Add additional notes about how to deploy this on a live system
 
-## Built With
-
-
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Rama Desplats** -  [ramadesplats](https://github.com/ramadesplats)
+* **Yuxiao Mao** -  [yuxiaomao](https://github.com/yuxiaomao)
+* **Florian Clanet** -  [flolight](https://github.com/flolight)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
