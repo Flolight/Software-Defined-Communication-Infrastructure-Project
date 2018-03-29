@@ -89,7 +89,7 @@ Add additional notes about how to deploy this on a live system
 
 * **Rama Desplats** -  [ramadesplats](https://github.com/ramadesplats)
 * **Yuxiao Mao** -  [yuxiaomao](https://github.com/yuxiaomao)
-* **Florian Clanet** -  [flolight](https://github.com/flolight)
+* **Florian Clanet** -  [Flolight](https://github.com/flolight)
 
 ## License
 
