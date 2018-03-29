@@ -91,11 +91,6 @@ Add additional notes about how to deploy this on a live system
 * **Yuxiao Mao** -  [yuxiaomao](https://github.com/yuxiaomao)
 * **Florian Clanet** -  [flolight](https://github.com/flolight)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
