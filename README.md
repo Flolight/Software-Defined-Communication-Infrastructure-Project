@@ -1,8 +1,10 @@
 # Software Defined Communication Infrastructure-Project
 
-Project description
-
 ## Getting Started
+
+### Conception
+
+To get more informations about the conception process and the implementation and conception choices, please check the [Miscellaneous](Miscellaneous) and [design](design) folders.
 ### Cleanning the project
 
 Start the controller going to the SDNController directory and run :
@@ -51,8 +53,6 @@ docker run --priviledged -h h1 --name=mininet-h1 -ti  --net='none' ubuntu /bin/b
 1. Replace ``` sdnAdapter/DeviceRest.java/LOCAL_IPV4 ``` with the host machine ip (ifconfig). The default value is 10.0.2.15
 1. If the TCP connexion is not working, just comment line 66 of ``` vnfAdapter/vnfAdapter.java ``` (vnfDocker.createContainer(VNFDocker.DC_PORT, countBindPort);)
 1. Launch view/MainApp.java
-
-### Installing
 
 # Useful commands
 
