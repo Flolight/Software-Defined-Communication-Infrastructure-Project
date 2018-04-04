@@ -47,12 +47,15 @@ docker run --priviledged -h h1 --name=mininet-h1 -ti  --net='none' ubuntu /bin/b
 
 1. Open the project with Eclipse (SDCI_Project)
 1. Install javafx
-2. Install e(fx)clipse
-2. In command line launch : ``` sudo apt-install openjfx ```
-2. Add /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/jfxrt.jar in the project classpath
-1. Replace ``` sdnAdapter/DeviceRest.java/LOCAL_IPV4 ``` with the host machine ip (ifconfig). The default value is 10.0.2.15
-1. If the TCP connexion is not working, just comment line 66 of ``` vnfAdapter/vnfAdapter.java ``` (vnfDocker.createContainer(VNFDocker.DC_PORT, countBindPort);)
-1. Launch view/MainApp.java
+  1. Install e(fx)clipse
+  1. In command line do : ``` sudo apt-install openjfx ```
+  1. Add ```/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/jfxrt.jar``` in the project classpath
+1. Replace ``` sdnAdapter/DeviceRest.java/LOCAL_IPV4 ``` with the host machine ip (can be found using ifconfig). By default, the coded address is 10.0.2.15
+1. Comment line 66 in the file ``` vnfAdapter/vnfAdapter.java ``` if the tcp connection is not possible (the line is: ```vnfDocker.createContainer(VNFDocker.DC_PORT, countBindPort);```)
+1. Launch ```view/MainApp.java```
+
+### View the conception shemas
+Open [design/uml_step1.mdj](design/uml_step1.mdj) with starUML.
 
 # Useful commands
 
